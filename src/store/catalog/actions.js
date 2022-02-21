@@ -38,8 +38,12 @@ const actions = {
   },
 
   clearCities ({ commit }) {
-      commit('SET_CITIES', [])
-  }
+    commit('SET_CITIES', [])
+  },
+
+  clearProducts ({ commit }) {
+    commit('SET_PRODUCTS', [])
+  },
 }
 
 export default actions

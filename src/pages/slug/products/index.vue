@@ -25,8 +25,6 @@ export default {
       const { subSlug } = this.$route.params
       return this.getSortingProducts(subSlug)
     }
-  },
-  methods: {
   }
 }
 </script>

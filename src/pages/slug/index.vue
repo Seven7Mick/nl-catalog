@@ -55,11 +55,15 @@ export default {
     ...mapActions({
       fetchCategories: "catalog/fetchCategories",
       fetchProducts: "catalog/fetchProducts",
+      clearProducts: "catalog/clearProducts"
     }),
     back() {
       this.$router.push("/category");
     },
   },
+  beforeUnmount() {
+    this.clearProducts()
+  }
 };
 </script>
 
