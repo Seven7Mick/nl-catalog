@@ -7,6 +7,7 @@
         v-debounce:500="handlerInput"
         @update:input-clear="clearInput"
         @update:input-target="targetValue"
+        @update:input="updateInput"
       />
       <base-btn
         class="base-modal__btn"
@@ -30,7 +31,7 @@ export default {
   },
   data: () => ({
     searchValue: {},
-    handler: () => ({})
+    searchInput: ''
   }),
   computed: {
     ...mapGetters({
@@ -38,7 +39,7 @@ export default {
       getCities: 'catalog/getCities'
     }),
     isDisabledBtn() {
-      return !Object.keys(this.searchValue).length
+      return !Object.keys(this.searchValue).length || this.searchValue.label !== this.searchInput
     }
   },
   methods: {
@@ -57,7 +58,11 @@ export default {
     },
     targetValue(item) {
       this.searchValue = item
+      this.searchInput = item.label
       this.fetchCities({ term: item.city })
+    },
+    updateInput(value) {
+      this.searchInput = value
     },
     accept() {
       this.options.handler(this.searchValue)
