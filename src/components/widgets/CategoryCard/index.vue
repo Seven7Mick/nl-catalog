@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
   name: 'CategoryCard',
   props: {
@@ -24,17 +22,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions({
-      fetchProducts: 'catalog/fetchProducts',
-    }),
     async relocateToSlug() {
-      let locale = localStorage.getItem('locale')
-      if (locale) {
-        locale = JSON.parse(locale)
-      }
-      const cityId = locale?.id || 1
-      const slug = this.category.slug
-      await this.fetchProducts({ cityId, slug })
       this.$router.push(`/category/${this.category.slug}`)
     }
   }
